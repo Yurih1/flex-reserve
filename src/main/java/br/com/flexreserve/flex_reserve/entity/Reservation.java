@@ -1,15 +1,23 @@
+/**
+ * @author Yuri Santos
+ * @since 16-01-2025
+ * @version 1.0
+
+ * Create entity for reservation. Use to create new reservation table fields...
+ */
+
 package br.com.flexreserve.flex_reserve.entity;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "reservations")
+@Table(name = "reservation")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nome;
-    private String descricao;
+    private String name;
+    private String description;
 
     public long getId() {
         return id;
@@ -19,19 +27,19 @@ public class Reservation {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
