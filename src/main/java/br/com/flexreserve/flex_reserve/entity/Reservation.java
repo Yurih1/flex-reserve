@@ -8,6 +8,7 @@
 
 package br.com.flexreserve.flex_reserve.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +19,18 @@ public class Reservation {
     private long id;
     private String name;
     private String description;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false) //PK
+    @JsonBackReference
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public long getId() {
         return id;
