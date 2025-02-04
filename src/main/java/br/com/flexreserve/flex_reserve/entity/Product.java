@@ -8,8 +8,11 @@ package br.com.flexreserve.flex_reserve.entity;
 
 import br.com.flexreserve.flex_reserve.enums.StatusProduct;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -20,7 +23,11 @@ public class Product {
     private String name;
     private Double value;
     private String description;
-    private String tags;
+    @ElementCollection
+    @CollectionTable(name = "product_tags", joinColumns = @JoinColumn(name = "product_id"))
+    @Fetch(FetchMode.JOIN)
+    @Column(name = "tag")
+    private List<String> tags;
     private LocalDate created_at;
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
@@ -65,11 +72,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getTags() {
+    public List<String> getTags() {
         return tags;
     }
 
-    public void setTags(String tags) {
+    public void setTags(List<String> tags) {
         this.tags = tags;
     }
 

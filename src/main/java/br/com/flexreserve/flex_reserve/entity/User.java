@@ -29,11 +29,20 @@ public class User {
     private String city;
     private String address;
     private String state;
+    private String password;
     private LocalDate created_at;
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Reservation> reservations;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @PrePersist
     public void prePersist() {
