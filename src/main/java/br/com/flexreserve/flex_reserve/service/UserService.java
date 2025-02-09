@@ -29,8 +29,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public List<User> update(User reservation) {
-        userRepository.save(reservation);
+    public List<User> update(User user) {
+        userRepository.save(user);
         return list();
     }
     public List<User> delete(Long id) {
